@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href='all.css' rel='stylesheet' type='text/css' />
+	 <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+  	
+<script>
+</script>
+	</head>
+<body class="codeRunner">
+  <div id="racuni" data-role="page">
+  <div data-role="header">
+  <a href="../index.html" data-icon="BACK" data-iconpos="notext" data-direction="reverse" rel="external">Back</a>
+		<a href="../nav.html" data-icon="search" data-iconpos="notext" data-rel="dialog" data-transition="fade">Search</a>
+	
+  <h1>knockout.js + jquery.mobile.js</h1></div>
+  <div data-role="content">
+<div class='liveExample'> 
+    
+    <h2>Contacts</h2>
+    <div id='contactsList'>
+        <table class='contactsEditor'>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Phone numbers</th>
+            </tr>
+            <tbody data-bind="foreach: contacts">
+                <tr>
+                    <td>
+                        <input data-bind='value: firstName' />
+                        <div><a href='#' data-bind='click: $root.removeContact'>Delete</a></div>
+                    </td>
+                    <td><input data-bind='value: lastName' /></td>
+                    <td>
+                        <table>
+                            <tbody data-bind="foreach: phones">
+                                <tr>
+                                    <td><input data-bind='value: type' /></td>
+                                    <td><input data-bind='value: number' /></td>
+                                    <td><a href='#' data-bind='click: $root.removePhone'>Delete</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href='#' data-bind='click: $root.addPhone'>Add number</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+     
+    <p>
+        <button data-bind='click: addContact'>Add a contact</button>
+        <button data-bind='click: save, enable: contacts().length > 0'>Save to JSON</button>
+    </p>
+     <div id="daj">
+    <textarea data-bind='value: lastSavedJson' rows='5' cols='60' disabled='disabled'> </textarea></div>
+        <textarea id="moji"> </textarea>
+
+	
+</div>
+    <script src="lib/requirejs/require.js" data-main="app/main"></script>
+  </div>
+ 
+</div>
+	</body>
+</html>
